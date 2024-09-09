@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:storeapp/services/Update.dart';
+/*import 'package:flutter/material.dart';
+
 
 class Textfield extends StatelessWidget {
    Textfield({super.key, String? productname});
@@ -66,7 +66,7 @@ late String productname;
               borderRadius: BorderRadius.circular(16)
             ),
             child: MaterialButton(onPressed: (){
-              updateProduct().updatepost();
+            
             },
             child: Text('Update', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
             ),
@@ -76,4 +76,4 @@ late String productname;
     );
     
   }
-}
+}*/

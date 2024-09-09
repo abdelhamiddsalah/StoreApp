@@ -4,7 +4,7 @@ class ProductCard {
   final double price;
   final String desc;
   final String image;
-  final ratingmodel rating;
+  final RatingModel rating; // تعديل هنا ليتوافق مع قواعد التسمية.
 
   ProductCard({
     required this.id,
@@ -17,26 +17,42 @@ class ProductCard {
 
   factory ProductCard.fromJson(Map<String, dynamic> json) {
     return ProductCard(
-      id: json['id'] ?? 0,
-      title: json['title'] ?? 'No Title', // Default value if null
-      price: (json['price'] ?? 0.0).toDouble(),
-      desc: json['desc'] ?? 'No Description', // Default value if null
-      image: json['image'] ?? 'No Image', // Default value if null
-      rating: ratingmodel.fromJson(json['rating'] ?? {}),
+      id: json['id'] ?? 0, // قيمة افتراضية
+      title: json['title'] ?? 'غير متوفر', // قيمة افتراضية
+      price: json['price']?.toDouble() ?? 0.0, // تأكد من تحويلها إلى double
+      desc: json['desc'] ?? 'لا توجد وصف', // قيمة افتراضية
+      image: json['image'] ?? 'https://example.com/default.jpg', // قيمة افتراضية
+      rating: RatingModel.fromJson(json['rating']),
     );
   }
 }
 
-class ratingmodel {
+class RatingModel {
   final double rate;
   final int count;
 
-  ratingmodel({required this.rate, required this.count});
+  RatingModel({required this.rate, required this.count});
 
-  factory ratingmodel.fromJson(Map<String, dynamic> json) {
-    return ratingmodel(
-      rate: (json['rate'] ?? 0.0).toDouble(), // Default value if null
-      count: json['count'] ?? 0, // Default value if null
+  factory RatingModel.fromJson(Map<String, dynamic> json) {
+    return RatingModel(
+      rate: json['rate']?.toDouble() ?? 0.0, // تأكد من تحويلها إلى double
+      count: json['count'] ?? 0, // قيمة افتراضية
     );
   }
 }
+
+
+/*class User {
+  final int id;
+  final String name;
+
+  User({required this.id, required this.name});
+
+  factory User.fromJson(Map<String, dynamic> json) {
+    return User(
+      id: json['id'],
+      name: json['name'],
+    );
+  }
+}
+*/
